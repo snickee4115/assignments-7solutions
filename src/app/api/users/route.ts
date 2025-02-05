@@ -16,9 +16,10 @@ export async function GET() {
     }
     const data: DummyJsonResponse = await response.json();
 
-    const result = groupUsersByDepartment(data.users);
+    const mapResult = groupUsersByDepartment(data.users);
+    const objResult = Object.fromEntries(mapResult);
 
-    return NextResponse.json({ data: result });
+    return NextResponse.json({ data: objResult });
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
   } catch (error: any) {
